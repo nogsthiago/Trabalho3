@@ -1,4 +1,5 @@
 import hashlib
+import sys
 
 def encriptar_senha(senha):
     # Função para criptografar a senha
@@ -13,12 +14,18 @@ def checar_senha(senha_criptografada, usuario_senha):
     return usuario_senha_hash == senha_criptografada
 
 if __name__ == "__main__":
-    with open("senha_criptografada.txt", "rb") as f:
+    if len(sys.argv) != 3:
+        print("Uso: python verificar_senha.py <senha_fornecida> <arquivo_senha>")
+        sys.exit(1)
+
+    with open(sys.argv[2], "rb") as f:
         senha_criptografada = f.read()
     
-    usuario_senha = input("Digite a senha: ")
+    usuario_senha = sys.argv[1]
 
     if checar_senha(senha_criptografada, usuario_senha):
         print("Senha correta.")
+        sys.exit(0)
     else:
         print("Senha incorreta.")
+        sys.exit(1)
