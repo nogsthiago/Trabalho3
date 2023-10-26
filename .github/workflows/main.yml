@@ -7,12 +7,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
     - name: Checar senha - Branch 1
-      run: python $GITHUB_WORKSPACE/verificar_senha.py
+      run: python verificar_senha.py
 
   branch2:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
     - name: Checar senha - Branch 2
-      run: pytest $GITHUB_WORKSPACE/teste_verificar_senha.py
+      run: pytest teste_verificar_senha.py
