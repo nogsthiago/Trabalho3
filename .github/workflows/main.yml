@@ -8,11 +8,11 @@ jobs:
 
     steps:
     - name: Checar senha - Branch 1
-      run: python verificar_senha.py
+      run: python $GITHUB_WORKSPACE/verificar_senha.py
 
   branch2:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checar senha - Branch 2
-      run: pytest teste_verificar_senha.py
+      run: pytest $GITHUB_WORKSPACE/teste_verificar_senha.py
